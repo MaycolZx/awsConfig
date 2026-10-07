@@ -21,18 +21,24 @@ mvn archetype:generate -DgroupId=com.motorbusqueda -DartifactId=indice-invertido
 
 ## Limpiar 
 cd indice-invertido
+rm pom.xml
 rm src/main/java/com/motorbusqueda/App.java
 rm src/test/java/com/motorbusqueda/AppTest.java
 
 ## Ahora modificamos el pom.xml y agregamos el archivo XmlInputFormat
 #vim pom.xml
+cp ../files/pom.xml .
 #vim src/main/java/com/motorbusqueda/XmlInputFormat.java
+cp ../files/XmlInputFormat.java src/main/java/com/motorbusqueda/XmlInputFormat.java
 
 ## Ahora compilamos el proyecto
 
-#mvn clean package
+mvn clean package
 #vim src/main/java/com/motorbusqueda/IndiceInvertido.java
-#mvn clean package
+
+cp ../files/IndiceInvertido.java src/main/java/com/motorbusqueda/IndiceInvertido.java
+
+mvn clean package
 
 # Ahora lanzamos el trabajo al cluster
-#hadoop jar target/indice-invertido-1.0-SNAPSHOT.jar com.motorbusqueda.IndiceInvertido /user/motor_busqueda/wikipedia /user/motor_busqueda/resultado_indice
+hadoop jar target/indice-invertido-1.0-SNAPSHOT.jar com.motorbusqueda.IndiceInvertido /user/motor_busqueda/wikipedia /user/motor_busqueda/resultado_indice
