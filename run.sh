@@ -8,12 +8,15 @@ yarn node -list
 # Datos 
 # https://dumps.wikimedia.org/other/mediawiki_content_current/eswiki/2026-08-01/xml/bzip2/
 wget https://dumps.wikimedia.org/other/mediawiki_content_current/eswiki/2026-08-01/xml/bzip2/eswiki-2026-08-01-p5168647p9944278.xml.bz2
-wget https://dumps.wikimedia.org/other/mediawiki_content_current/eswiki/2026-08-01/xml/bzip2/eswiki-2026-08-01-p5p5168645.xml.bz2
-wget https://dumps.wikimedia.org/other/mediawiki_content_current/eswiki/2026-08-01/xml/bzip2/eswiki-2026-08-01-p9944283p11564479.xml.bz2
+#wget https://dumps.wikimedia.org/other/mediawiki_content_current/eswiki/2026-08-01/xml/bzip2/eswiki-2026-08-01-p5p5168645.xml.bz2
+#wget https://dumps.wikimedia.org/other/mediawiki_content_current/eswiki/2026-08-01/xml/bzip2/eswiki-2026-08-01-p9944283p11564479.xml.bz2
+
+bzip2 -d eswiki-2026-08-01-p5168647p9944278.xml.bz2
 
 # Desde el nodo principal
 hdfs dfs -mkdir -p /user/motor_busqueda/wikipedia
-hdfs dfs -put *.xml.bz2 /user/motor_busqueda/wikipedia/
+hdfs dfs -put ./eswiki-2026-08-01-p5168647p9944278.xml /user/motor_busqueda/wikipedia/
+#hdfs dfs -put *.xml.bz2 /user/motor_busqueda/wikipedia/
 
 # Crearemos un proyecto con java
 sudo yum install maven -y
